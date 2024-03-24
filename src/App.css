@@ -2,37 +2,273 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-inner {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.section-inner {
+	margin: 0 auto;
+	max-width: var( --eksell-inner-width-max );
+	width: calc( 100% - var( --eksell-inner-gutter ) );
   display: flex;
-  flex-direction: column;
+	justify-content: space-between;
+  position: relative;
+}
+
+.section-inner.max-percentage { width: 100%; }
+.section-inner.no-margin { margin: 0; }
+
+.header-titles {
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: -1.2rem 0 0 -2.4rem;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	flex-wrap: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+.section-inner {
+  margin: 0 auto;
+  max-width: var(--eksell-inner-width-max);
+  width: calc(100% - var(--eksell-inner-gutter));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Reset default margin and padding for better alignment */
+body, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the page */
+body {
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 100%; /* Set the maximum width to 100% of the viewport width */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap to the next line if needed */
+  justify-content: space-between;
+  padding: 20px;
+  min-height: 80vh; /* Set a minimum height to fill the entire viewport */
+}
+
+.left-column {
+  flex: 1;
+  margin-right: 20px; /* Adds some space between the left column and the events */
+  max-height: 80vh;
+  width: 45%;
+}
+
+.current-event {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 20vh; 
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Adds space between the two containers */
+}
+
+.opening-hours-container, .qr-code-container {
+  flex: 1; /* This makes both containers take up equal width */
+}
+
+.opening-hours-container {
+  text-align: left; /* Aligns text to the left for readability */
+  padding: 20px; /* Adds padding inside the container for spacing */
+}
+
+.qr-code-container {
+  text-align: center; /* Centers the QR code and its caption */
+}
+
+.events {
+  max-height: 80vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 45%; /* Or adjust to match your layout needs */
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
+  border-radius: 5px; /* Optional: Rounds the corners of the events container */
+}
+
+/* Adjustments for better appearance */
+.events-container {
+  max-height: 650px; /* Adjust based on the total height desired for 6 rows, including any margins/paddings */
+  overflow-y: auto; /* This enables scrolling within the container */
+  position: relative;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.events-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+/* Style individual future events */
+.event {
+  padding: 10px;
+  flex: 0 0 auto; /* Prevent events from shrinking */
+  margin-bottom: 20px; /* Add space between events */
+  font-family: 'Arial', sans-serif; /* Custom font family */
+  font-size: 16px; /* Custom font size */
+  color: #333; /* Custom text color */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack event details vertically */
+  border-radius: 10px; /* Rounds the corners of each event */
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
+}
+
+/* Style the event details within each event */
+.event p {
+  margin: 5px 0;
+}
+
+/* Style different background colors for each event */
+.event:nth-child(2n) {
+  background-color: #ffe4e1; /* Light pink */
+}
+
+.event:nth-child(3n) {
+  background-color: #add8e6; /* Light blue */
+}
+
+.event:nth-child(4n) {
+  background-color: #ffcc99; /* Light orange */
+}
+
+@keyframes scrollEvents {
+  0% {
+      transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+      transform: translateY(-100%);
   }
+}
+
+
+/* Style headings and event details */
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+strong {
+  color: #007bff;
+}
+
+.site-logo {
+	margin: 1.0rem 0 0 2.4rem;
+}
+
+.site-title {
+	font-size: 2.0rem;
+	font-weight: bold;
+}
+
+.site-title a {
+	color: inherit;
+	display: block;
+	outline: none;
+	text-decoration: none;
+}
+
+.site-title a:hover,
+.site-title a:focus {
+	text-decoration: underline;
+}
+
+/* Block: Site Title ------------------------- */
+
+.wp-block-site-title a {
+	text-decoration: none;
+}
+
+.wp-block-site-title a:hover,
+.wp-block-site-title a:focus {
+	text-decoration: underline;
+}
+
+.site-logo a,
+.site-logo img {
+	display: block;
+}
+
+.site-logo img {
+	max-height: 5.8rem;
+	width: auto;
+}
+
+.site-description {
+	line-height: 1.25;
+  display: block;
+  margin-left: 20px;
+
+}
+
+.color-secondary { 
+  color: gray;
+}
+.border-color-secondary { border-color: var( --eksell-secondary-color ); }
+
+.site-logo img.logo-dark-mode {
+	display: none;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	.has-dark-mode-palette .site-logo img.logo-regular:not(:only-child) { display: none; }
+	.has-dark-mode-palette .site-logo img.logo-dark-mode { display: block; }
+}
+
+.site-logo img {
+  max-height: 7.2rem;
+}
+
+.wp-custom-logo .header-titles {
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.screen-reader-text {
+	clip: rect( .1rem, .1rem, .1rem, .1rem );
+	height: .1rem;
+	overflow: hidden;
+	position: absolute !important;
+		left: -999999rem;
+	width: .1rem;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: .3rem;
+	box-shadow: 0 0 .2rem .2rem rgba( 0, 0, 0, 0.6 );
+	clip: auto !important;
+	display: block;
+	font-size: 1.4rem;
+	font-weight: 700;
+	height: auto;
+	left: .5rem;
+	line-height: normal;
+	padding: 1.5rem 2.3rem 1.4rem 2.3rem;
+	text-decoration: none;
+	top: .5rem;
+	width: auto;
+	z-index: 100000;
+}
+
+.qr-code{
+  width: 70%;
+  height: 70%;
 }

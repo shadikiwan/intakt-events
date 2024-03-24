@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Intakt Events
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Show the current and upcomming Events in in:takt.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project requires **Node.js version 16**. You can check your current Node.js version using:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+node -v
+```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you need to install or switch to Node.js version 16, you can use nvm (Node Version Manager) by running:
+```bash
+nvm install 16
+nvm use 16
+```
 
-### `npm run build`
+## Installing
+A step-by-step series of examples that tell you how to get a development environment running.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. First clone the repository to your local machine:
+```bash
+git clone https://github.com/shadikiwan/intakt-events
+cd intakt-events
+```
+2. Then, install the dependencies for both the backend and the frontend:
+```bash
+# Install backend dependencies
+cd backend
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Install frontend dependencies
+cd ..
+npm install
+```
+## Installing
+To run the application, you need to start both the backend server and the frontend application. Here's how you can do it:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the Backend Server
+```bash
+# Navigate to the backend directory if you're not already there
+cd backend
 
-### `npm run eject`
+# Start the server
+npm run start-server
+```
+Leave the backend server running and open a new terminal window or tab for the next steps.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Start the Frontend Application
+From the root directory of your project:
+```bash
+npm start
+```
+The frontend application should now be running and accessible in your web browser at http://localhost:3000.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Built With
+- React - The web framework used
+- Node.js - JavaScript runtime
+- Express - Web application framework for Node.js
