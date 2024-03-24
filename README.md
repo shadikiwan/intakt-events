@@ -26,7 +26,7 @@ A step-by-step series of examples that tell you how to get a development environ
 
 1. First clone the repository to your local machine:
 ```bash
-git clone https://github.com/shadikiwan/intakt-events
+git clone https://github.com/shadikiwan/intakt-events.git
 cd intakt-events
 ```
 2. Then, install the dependencies for both the backend and the frontend:
