@@ -138,15 +138,15 @@ body {
 
 /* Style different background colors for each event */
 .event:nth-child(2n) {
-  background-color: #ffe4e1; /* Light pink */
+  background-color: #FFFF8F; /* Canary Yellow */
 }
 
 .event:nth-child(3n) {
-  background-color: #add8e6; /* Light blue */
+  background-color: #FFFDD0; /* Cream */
 }
 
 .event:nth-child(4n) {
-  background-color: #ffcc99; /* Light orange */
+  background-color: #FFFAA0; /* Pastel Yellow */
 }
 
 @keyframes scrollEvents {
