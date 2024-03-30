@@ -5,6 +5,10 @@ function App() {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [futureEvents, setFutureEvents] = useState([]);
 
+  console.log(data);
+  console.log(data.currentEvent);
+  console.log(data.futureEvents);
+
   useEffect(() => {
     fetch('/.netlify/functions/calendar')
       .then(response => response.json())
