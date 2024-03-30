@@ -7,7 +7,8 @@ function App() {
 
   useEffect(() => {
     // Fetch events data from your backend
-    fetch('http://localhost:4000/')
+    //fetch('http://localhost:4000/')
+    fetch('https://intakt-magdeburg.netlify.app:4000/')
       .then(response => response.json())
       .then(data => {
         setCurrentEvent(data.currentEvent);
