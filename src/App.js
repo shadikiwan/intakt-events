@@ -11,6 +11,9 @@ function App() {
       .then(data => {
         setCurrentEvent(data.currentEvent);
         setFutureEvents(data.futureEvents);
+        
+        // Initialize scrolling after data is fetched and components are mounted
+        scrollToBottom();
       })
       .catch(error => console.error('Error fetching events:', error));
   }, []);
