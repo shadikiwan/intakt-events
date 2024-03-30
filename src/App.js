@@ -6,7 +6,7 @@ function App() {
   const [futureEvents, setFutureEvents] = useState([]);
 
   useEffect(() => {
-    fetch('/netlify/functions/calendar')
+    fetch('/.netlify/functions/calendar')
       .then(response => response.json())
       .then(data => {
         setCurrentEvent(data.currentEvent);
