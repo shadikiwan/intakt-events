@@ -6,15 +6,11 @@ function App() {
   const [futureEvents, setFutureEvents] = useState([]);
 
   useEffect(() => {
-    // Fetch events data from your backend
-    //fetch('http://localhost:4000/')
-    fetch('https://intakt-magdeburg.netlify.app:4000/')
+    fetch('/.netlify/functions/calendar')
       .then(response => response.json())
       .then(data => {
         setCurrentEvent(data.currentEvent);
         setFutureEvents(data.futureEvents);
-        // Initialize scrolling after data is fetched and components are mounted
-        scrollToBottom();
       })
       .catch(error => console.error('Error fetching events:', error));
   }, []);
