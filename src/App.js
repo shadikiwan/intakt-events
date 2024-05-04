@@ -37,14 +37,7 @@ function App() {
         fetch('http://localhost:4000/')
             .then(response => response.json())
             .then(data => {
-                const tempo ={
-                    "summary": "Plenum",
-                    "start": "2024-05-08T11:00:00.000Z",
-                    "end": "2024-05-08T15:00:00.000Z",
-                    "description": "No description available"
-                };
-                setCurrentEvent(tempo);
-                //setCurrentEvent(data.currentEvent);
+                setCurrentEvent(data.currentEvent);
                 setFutureEvents(data.futureEvents.concat(data.futureEvents)); // Duplicate the events for smooth looping
                 startAutoScroll();
             })
