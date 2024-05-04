@@ -1,274 +1,307 @@
+/* Load Peace Sans locally */
+@font-face {
+    font-family: 'Peace Sans';
+    src: url('./fonts/PeaceSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Questrial';
+  src: url('./fonts/Questrial-Regular.ttf') format('truetype');
+}
+
 .App {
-  text-align: center;
+    text-align: center;
+    font-family: 'Questrial'; /* Set default font to Questrial */
 }
 
 .header-inner {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .section-inner {
-	margin: 0 auto;
-	max-width: var( --eksell-inner-width-max );
-	width: calc( 100% - var( --eksell-inner-gutter ) );
-  display: flex;
-	justify-content: space-between;
-  position: relative;
+    margin: 0 auto;
+    max-width: var(--eksell-inner-width-max);
+    width: calc(100% - var(--eksell-inner-gutter));
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 
-.section-inner.max-percentage { width: 100%; }
-.section-inner.no-margin { margin: 0; }
+.section-inner.max-percentage {
+    width: 100%;
+}
+.section-inner.no-margin {
+    margin: 0;
+}
 
 .header-titles {
-	align-items: baseline;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	margin: -1.2rem 0 0 -2.4rem;
-  align-items: center;
-	flex-wrap: nowrap;
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: -1.2rem 0 0 -2.4rem;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .section-inner {
-  margin: 0 auto;
-  max-width: var(--eksell-inner-width-max);
-  width: calc(100% - var(--eksell-inner-gutter));
+    margin: 0 auto;
+    max-width: var(--eksell-inner-width-max);
+    width: calc(100% - var(--eksell-inner-gutter));
 }
 
 /* Reset default margin and padding for better alignment */
 body, h2, p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Set a background color for the page */
 body {
-  background-color: #ffffff;
-  font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    font-family: 'Questrial';
 }
 
 .container {
-  max-width: 100%; /* Set the maximum width to 100% of the viewport width */
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap; /* Allow content to wrap to the next line if needed */
-  justify-content: space-between;
-  padding: 20px;
-  min-height: 80vh; /* Set a minimum height to fill the entire viewport */
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    min-height: 80vh;
 }
 
 .left-column {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  margin-right: 20px; /* Adds some space between the left column and the events */
+  margin-right: 20px;
   max-height: 80vh;
   width: 45%;
+  padding: 10px;
 }
 
 .current-event {
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
   min-height: 20vh; 
+  flex-shrink: 0; /* Prevent shrinking */
+
 }
 
 .info-container {
+  flex-grow: 1; /* Take up remaining height */
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* Align items at the top */
-  gap: 20px; /* Adds space between the two containers */
-}
-
-.opening-hours-container, .qr-code-container {
-  flex: 1; /* This makes both containers take up equal width */
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+  border-top-right-radius: 50px;
+  background-color: #fae070;
+  height: 100%;
 }
 
 .opening-hours-container {
-  text-align: left; /* Aligns text to the left for readability */
-  padding: 20px; /* Adds padding inside the container for spacing */
+    text-align: left;
+    padding: 20px;
+}
+
+.opening-hours {
+  font-family: 'Questrial';
+  font-size: large;
 }
 
 .qr-code-container {
-  text-align: center; /* Centers the QR code and its caption */
+    flex-grow: 1; /* Take up remaining height */
+    margin-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-height: 100%;
+}
+
+.qr-code {
+  width: 40%;
+  height: 40%;
 }
 
 .events {
-  max-height: 80vh;
-  overflow-y: auto; /* Enable vertical scrolling */
-  width: 45%; /* Or adjust to match your layout needs */
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
-  border-radius: 5px; /* Optional: Rounds the corners of the events container */
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 45%;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 /* Adjustments for better appearance */
 .events-container {
-  max-height: 650px; /* Adjust based on the total height desired for 6 rows, including any margins/paddings */
-  overflow-y: auto; /* This enables scrolling within the container */
-  position: relative;
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+    max-height: 650px;
+    overflow-y: auto;
+    position: relative;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .events-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+    display: none;
 }
 
 /* Style individual future events */
 .event {
   padding: 10px;
-  flex: 0 0 auto; /* Prevent events from shrinking */
-  margin-bottom: 20px; /* Add space between events */
-  font-family: 'Arial', sans-serif; /* Custom font family */
-  font-size: 16px; /* Custom font size */
-  color: #333; /* Custom text color */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack event details vertically */
-  border-radius: 10px; /* Rounds the corners of each event */
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
+  flex: 0 0 auto;
+  margin-bottom: 20px;
+  font-family: 'Questrial';
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;  /* Increased rounding */
+  background-color: white;
 }
 
 /* Style the event details within each event */
 .event p {
-  margin: 5px 0;
+    margin: 5px 0;
 }
 
 /* Style different background colors for each event */
-.event:nth-child(2n) {
-  background-color: #FFFF8F; /* Canary Yellow */
+
+.bg-color1 {
+  background-color: #e5ad17;
+  border-radius: 20px;
 }
 
-.event:nth-child(3n) {
-  background-color: #FFFDD0; /* Cream */
-}
-
-.event:nth-child(4n) {
-  background-color: #FFFAA0; /* Pastel Yellow */
+.bg-color2 {
+  background-color: #f7cd45;
+  border-radius: 20px;
 }
 
 @keyframes scrollEvents {
-  0% {
-      transform: translateY(0);
-  }
-  100% {
-      transform: translateY(-100%);
-  }
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
 }
-
 
 /* Style headings and event details */
 h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+    font-family: 'Peace Sans';
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 strong {
-  color: #007bff;
+    color: #353573;
 }
 
 .site-logo {
-	margin: 1.0rem 0 0 2.4rem;
+    margin: 1.0rem 0 0 2.4rem;
 }
 
 .site-title {
-	font-size: 2.0rem;
-	font-weight: bold;
+    font-family: 'Peace Sans';
+    font-size: 2.0rem;
+    font-weight: bold;
 }
 
 .site-title a {
-	color: inherit;
-	display: block;
-	outline: none;
-	text-decoration: none;
+    color: inherit;
+    display: block;
+    outline: none;
+    text-decoration: none;
 }
 
 .site-title a:hover,
 .site-title a:focus {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* Block: Site Title ------------------------- */
 
 .wp-block-site-title a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .wp-block-site-title a:hover,
 .wp-block-site-title a:focus {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .site-logo a,
 .site-logo img {
-	display: block;
+    display: block;
 }
 
 .site-logo img {
-	max-height: 5.8rem;
-	width: auto;
+    max-height: 5.8rem;
+    width: auto;
 }
 
 .site-description {
-	line-height: 1.25;
-  display: block;
-  margin-left: 20px;
-
+    line-height: 1.25;
+    display: block;
+    margin-left: 20px;
+    font-family: 'Questrial';
 }
 
 .color-secondary { 
-  color: gray;
+    color: gray;
 }
-.border-color-secondary { border-color: var( --eksell-secondary-color ); }
+.border-color-secondary { border-color: var(--eksell-secondary-color); }
 
 .site-logo img.logo-dark-mode {
-	display: none;
+    display: none;
 }
 
-@media ( prefers-color-scheme: dark ) {
-	.has-dark-mode-palette .site-logo img.logo-regular:not(:only-child) { display: none; }
-	.has-dark-mode-palette .site-logo img.logo-dark-mode { display: block; }
+@media (prefers-color-scheme: dark) {
+    .has-dark-mode-palette .site-logo img.logo-regular:not(:only-child) { display: none; }
+    .has-dark-mode-palette .site-logo img.logo-dark-mode { display: block; }
 }
 
 .site-logo img {
-  max-height: 7.2rem;
+    max-height: 7.2rem;
 }
 
 .wp-custom-logo .header-titles {
-	align-items: center;
-	flex-wrap: nowrap;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .screen-reader-text {
-	clip: rect( .1rem, .1rem, .1rem, .1rem );
-	height: .1rem;
-	overflow: hidden;
-	position: absolute !important;
-		left: -999999rem;
-	width: .1rem;
+    clip: rect(0.1rem, 0.1rem, 0.1rem, 0.1rem);
+    height: 0.1rem;
+    overflow: hidden;
+    position: absolute !important;
+    left: -999999rem;
+    width: 0.1rem;
 }
 
 .screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: .3rem;
-	box-shadow: 0 0 .2rem .2rem rgba( 0, 0, 0, 0.6 );
-	clip: auto !important;
-	display: block;
-	font-size: 1.4rem;
-	font-weight: 700;
-	height: auto;
-	left: .5rem;
-	line-height: normal;
-	padding: 1.5rem 2.3rem 1.4rem 2.3rem;
-	text-decoration: none;
-	top: .5rem;
-	width: auto;
-	z-index: 100000;
+    background-color: #f1f1f1;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    height: auto;
+    left: 0.5rem;
+    line-height: normal;
+    padding: 1.5rem 2.3rem 1.4rem 2.3rem;
+    text-decoration: none;
+    top: 0.5rem;
+    width: auto;
+    z-index: 100000;
 }
 
-.qr-code{
-  width: 70%;
-  height: 70%;
-}
+
