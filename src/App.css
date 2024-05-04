@@ -60,11 +60,51 @@ body, h2, p {
 
 /* Set a background color for the page */
 body {
-    background-color: #ffffff;
-    font-family: 'Questrial';
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    background: #fff; /* Default background color */
+    font-family: 'Questrail';
+}
+
+/* Bubble common styling */
+.bubble {
+    position: absolute;
+    bottom: -150px;  /* Start below the screen */
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: -1;  /* Behind the container */
+    animation: bubbleMove 15s infinite linear;
+}
+
+/* Animation for bubbles */
+@keyframes bubbleMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-120vh);
+    }
+}
+
+/* Bubble colors */
+.bubble-yellow {
+    background-color: #f7cd45;
+}
+
+.bubble-light-yellow {
+    background-color: #fae070;
+}
+
+.bubble-orange {
+    background-color: #e5ad17;
 }
 
 .container {
+    position: relative;
+    z-index: 1;  /* In front of the bubbles */
     max-width: 100%;
     margin: 0 auto;
     display: flex;
@@ -99,37 +139,36 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20px;
+  padding-top: 10px;
   border-top-right-radius: 50px;
   background-color: #fae070;
   height: 100%;
 }
 
 .opening-hours-container {
-    text-align: left;
-    padding: 20px;
+    text-align: center;
+    padding: 10px;
 }
 
 .opening-hours {
   font-family: 'Questrial';
-  font-size: large;
+  font-size: x-large;
 }
 
 .qr-code-container {
     flex-grow: 1; /* Take up remaining height */
-    margin-top: 30px;
-    padding-bottom: 20px;
+    padding: 10px;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
     max-height: 100%;
 }
 
 .qr-code {
-  width: 40%;
-  height: 40%;
+  width: 50%;
+  height: 50%;
 }
 
 .events {
@@ -138,15 +177,19 @@ body {
     width: 45%;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 /* Adjustments for better appearance */
 .events-container {
-    max-height: 650px;
+    max-height: 100%;
     overflow-y: auto;
     position: relative;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    border-radius: 20px;
 }
 
 .events-container::-webkit-scrollbar {
@@ -196,11 +239,13 @@ body {
 /* Style headings and event details */
 h2 {
     font-family: 'Peace Sans';
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
 strong {
+    font-family: 'Peace Sans';
+    font-size: 20px;
     color: #353573;
 }
 
@@ -249,6 +294,7 @@ strong {
 
 .site-description {
     line-height: 1.25;
+    font-size: large;
     display: block;
     margin-left: 20px;
     font-family: 'Questrial';
