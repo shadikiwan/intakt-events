@@ -13,7 +13,7 @@ function createBubble() {
     bubble.classList.add(getRandomColorClass());
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
-    bubble.style.left = `${position}vw`;
+    bubble.style.right = `${position}vw`;
     bubble.style.animationDuration = `${animationDuration}s`;
 
     document.body.appendChild(bubble);

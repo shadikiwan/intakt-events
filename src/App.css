@@ -73,6 +73,7 @@ body {
 .bubble {
     position: absolute;
     bottom: -150px;  /* Start below the screen */
+    right: -150px;
     border-radius: 50%;
     opacity: 0.7;
     z-index: -1;  /* Behind the container */
@@ -82,10 +83,10 @@ body {
 /* Animation for bubbles */
 @keyframes bubbleMove {
     0% {
-        transform: translateY(0);
+        transform: translate(0, 0);
     }
     100% {
-        transform: translateY(-120vh);
+        transform: translate(-50vw, -120vh);
     }
 }
 
