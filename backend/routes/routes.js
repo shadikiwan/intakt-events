@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 router.get('/', async (req, res) => {
     const fetch = (await import('node-fetch')).default;
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const events = comp.getAllSubcomponents('vevent');
 
     const now = new Date();
-    const maxDate = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)); // 30 days from now, including time
+    const maxDate = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)); // 30 days from now
     let currentEvent = null;
     let futureEvents = [];
 
@@ -24,28 +24,25 @@ router.get('/', async (req, res) => {
 
         if (icalEvent.isRecurring()) {
             const iterator = icalEvent.iterator();
-
-            let next = iterator.next();
-            while (next && next.toJSDate() <= maxDate) {
+            let next;
+            while ((next = iterator.next()) && next.toJSDate() <= maxDate) {
                 const nextStart = next.toJSDate();
                 const nextEnd = new Date(nextStart.getTime() + (eventEnd - eventStart));
-
                 if (nextStart <= now && nextEnd > now) {
                     currentEvent = {
                         summary: icalEvent.summary,
                         start: nextStart,
                         end: nextEnd,
-                        description: icalEvent.description ? icalEvent.description : 'No description available'
+                        description: icalEvent.description || 'No description available'
                     };
-                } else if (nextStart > now) {
+                } else if (nextStart > now && nextStart <= maxDate) {
                     futureEvents.push({
                         summary: icalEvent.summary,
                         start: nextStart,
                         end: nextEnd,
-                        description: icalEvent.description ? icalEvent.description : 'No description available'
+                        description: icalEvent.description || 'No description available'
                     });
                 }
-                next = iterator.next();
             }
         } else {
             if (eventStart <= now && eventEnd > now) {
@@ -53,23 +50,24 @@ router.get('/', async (req, res) => {
                     summary: icalEvent.summary,
                     start: eventStart,
                     end: eventEnd,
-                    description: icalEvent.description ? icalEvent.description : 'No description available'
+                    description: icalEvent.description || 'No description available'
                 };
-            } else if (eventStart > now) {
+            } else if (eventStart > now && eventStart <= maxDate) {
                 futureEvents.push({
                     summary: icalEvent.summary,
                     start: eventStart,
                     end: eventEnd,
-                    description: icalEvent.description ? icalEvent.description : 'No description available'
+                    description: icalEvent.description || 'No description available'
                 });
             }
         }
     });
 
     // Sort the future events by start date
+    futureEvents = futureEvents.filter(event => event.start <= maxDate);
     futureEvents.sort((a, b) => a.start - b.start);
 
-    res.send({currentEvent, futureEvents})
-})
+    res.send({ currentEvent, futureEvents });
+});
 
-module.exports = router
+module.exports = router;
