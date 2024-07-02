@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
@@ -31,22 +31,48 @@ function getRandomColorClass() {
 function App() {
     const [currentEvent, setCurrentEvent] = useState(null);
     const [futureEvents, setFutureEvents] = useState([]);
+    const [videoList, setVideoList] = useState([]);
+    const videoRef = useRef(null);
+    const currentVideoIndex = useRef(0);
 
     useEffect(() => {
         // Fetch events data from your backend
         fetch('http://localhost:4000/')
             .then(response => response.json())
             .then(data => {
+                /*const any = {
+                    "summary": "Lesung Gedichte eines Leiharbeiters Kilian Lippold",
+                    "start": "2024-07-06T16:00:00.000Z",
+                    "end": "2024-07-06T17:00:00.000Z",
+                    "description": "No description available"
+                };
+                setCurrentEvent(any);*/
                 setCurrentEvent(data.currentEvent);
                 setFutureEvents(data.futureEvents.concat(data.futureEvents)); // Duplicate the events for smooth looping
                 startAutoScroll();
             })
             .catch(error => console.error('Error fetching events:', error));
 
+        // Fetch video files from the server
+        fetch('http://localhost:4000/api/videos')
+            .then(response => response.json())
+            .then(data => {
+                setVideoList(data);
+            })
+            .catch(error => console.error('Error fetching videos:', error));
+
         // Create bubbles at intervals
         const bubbleInterval = setInterval(createBubble, 1000);
         return () => clearInterval(bubbleInterval);
     }, []);
+
+    useEffect(() => {
+        if (videoList.length > 0 && videoRef.current) {
+            videoRef.current.src = `/videos/${videoList[currentVideoIndex.current]}`;
+            videoRef.current.muted = true; // Mute the video
+            videoRef.current.play();
+        }
+    }, [videoList]);
 
     const startAutoScroll = () => {
         const container = document.querySelector('.events-container');
@@ -71,6 +97,12 @@ function App() {
         requestAnimationFrame(scroll);
     };
 
+    const handleVideoEnded = () => {
+        currentVideoIndex.current = (currentVideoIndex.current + 1) % videoList.length;
+        videoRef.current.src = `/videos/${videoList[currentVideoIndex.current]}`;
+        videoRef.current.play();
+    };
+
     const getBackgroundColorClass = (index) => {
         return index % 2 === 0 ? 'bg-color1' : 'bg-color2';
     };
@@ -92,6 +124,24 @@ function App() {
                 </div>
             </div>
             <div className="container">
+                <div className="left-info-column">
+                    <div className="opening-hours-container">
+                        <h2>Öffnungszeiten</h2>
+                        <div className="opening-hours">
+                            <h4>MO: 13:00 – 15:00 Uhr</h4>
+                            <h4>DI: 17:00 – 19:00 Uhr</h4>
+                            <h4>DO: 15:00 – 17:00 Uhr</h4>
+                        </div>
+                    </div>
+                    <div className="qr-code">
+                        <h4>www.intakt-magdeburg.de</h4>
+                        <img className="qr-code" src="intakt_website.png" alt="QR Code for https://intakt-magdeburg.de/" />
+                    </div>
+                    <div className="qr-code">
+                        <h4>@intakt_magdeburg</h4>
+                        <img className="qr-code" src="intakt_instagram.png" alt="QR Code for https://www.instagram.com/intakt_magdeburg/" />
+                    </div>
+                </div>
                 <div className="left-column">
                     {currentEvent && (
                         <>
@@ -104,27 +154,26 @@ function App() {
                             </div>
                         </>
                     )}
-                    <div className="info-container">
-                        <div className="opening-hours-container">
-                            <h2>Öffnungszeiten</h2>
-                            <div className="opening-hours">
-                                <p>MO: 13:00 – 15:00 Uhr</p>
-                                <p>DIE: 17:00 – 19:00 Uhr</p>
-                                <p>DO: 15:00 – 17:00 Uhr</p>
+                    <div className="video-container">
+                            <div id="monitor">
+                                <div id="monitorscreen">
+                                    <video 
+                                        controls 
+                                        ref={videoRef}
+                                        onEnded={handleVideoEnded}
+                                        muted
+                                        autoPlay
+                                        className="video"
+                                    >
+                                        {videoList.length > 0 && (
+                                            <source 
+                                                src={`/videos/${videoList[currentVideoIndex.current]}`} 
+                                                type="video/mp4" 
+                                            />
+                                        )}
+                                    </video>
+                                </div>
                             </div>
-                        </div>
-                        <div className="qr-code-container">
-                            <div>
-                                <h2>Besucht unsere Website:</h2>
-                                <h5>www.intakt-magdeburg.de</h5>
-                                <img className="qr-code" src="intakt_website.png" alt="QR Code for https://intakt-magdeburg.de/" />
-                            </div>
-                            <div>
-                                <h2>Besucht uns auf Instagram:</h2>
-                                <h5>@intakt_magdeburg</h5>
-                                <img className="qr-code" src="intakt_instagram.png" alt="QR Code for https://www.instagram.com/intakt_magdeburg/" />
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="events">
