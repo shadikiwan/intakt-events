@@ -66,7 +66,7 @@ body {
     overflow-y: hidden;
     position: relative;
     background: #fff; /* Default background color */
-    font-family: 'Questrail';
+    font-family: 'Questrial';
 }
 
 /* Bubble common styling */
@@ -115,11 +115,11 @@ body {
     min-height: 80vh;
 }
 
-.left-column {
+.mid-column {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  margin-right: 20px;
+  flex: 1.75;
+  margin: 0 20px 0 20px;
   max-height: 80vh;
   width: 45%;
   padding: 10px;
@@ -130,57 +130,63 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
-  min-height: 20vh; 
   flex-shrink: 0; /* Prevent shrinking */
 
 }
 
-.info-container {
-  flex-grow: 1; /* Take up remaining height */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 10px;
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px 0 10px;
+    max-height: 86vh;
+    width: 45%;
+  }
+
+.info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   border-top-right-radius: 50px;
   background-color: #fae070;
+  align-items: center;
   height: 100%;
 }
 
-.opening-hours-container {
-    text-align: center;
-    padding: 10px;
+.opening-hours-container, .qr-code-container {
+    padding: 20px;
 }
 
-.opening-hours {
-  font-family: 'Questrial';
-  font-size: x-large;
+.opening-hours-container {
+    font-size: 30px;
 }
 
 .qr-code-container {
-    flex-grow: 1; /* Take up remaining height */
-    padding: 10px;
-    text-align: center;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-    max-height: 100%;
+    flex-direction: column;
 }
 
 .qr-code {
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: auto;
+  margin: 10px 0 10px 0;
+}
+
+.space {
+    padding-bottom: 20px;
 }
 
 .events {
-    max-height: 80vh;
+    max-height: 86vh;
     overflow-y: auto;
     width: 45%;
     padding: 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 1.25;
 }
 
 /* Adjustments for better appearance */
@@ -351,4 +357,69 @@ strong {
     z-index: 100000;
 }
 
+/*Responsive TV*/
+  #monitor {
+      background: #000; 
+      position: relative;
+      border-top: 3px solid #888; 
+      padding: 2% 2% 4% 2%; 
+      border-radius: 10px; 
+      border-bottom-left-radius: 50% 2%; 
+      border-bottom-right-radius: 50% 2%; 
+      transition: margin-right 1s;
+  }
+  
+  #monitor:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 3%;
+      left: 36%;
+      height: .5%; 
+      width: 28%;
+      background: #ddd; 
+      border-radius: 50%; 
+      box-shadow: 0 0 3px 0 white; 
+  }
+  
+  #monitorscreen {
+      position: relative;
+    background-color: #000000;
+      background-size: cover; 
+      background-position: top center;
+      height: 0; 
+      padding-bottom: 56.25%; 
+      position: relative;
+      overflow: hidden;
+  }
+  
+  @media all and (min-width: 960px) {
+      #monitor {
+          -webkit-animation: tvflicker .2s infinite alternate; 
+          -moz-animation:    tvflicker .5s infinite alternate; 
+          -o-animation:      tvflicker .5s infinite alternate; 
+          animation:         tvflicker .5s infinite alternate; 
+      }
+  
+      @-webkit-keyframes tvflicker {
+        0%   { box-shadow: 0 0 100px 0 rgba(200,235,255,0.4); }
+        100% { box-shadow: 0 0 95px 0 rgba(200,230,255,0.45); }
+      }
+      @-moz-keyframes tvflicker {
+        0%   { box-shadow: 0 0 100px 0 rgba(225,235,255,0.4); }
+        100% { box-shadow: 0 0 60px 0 rgba(200,220,255,0.6); }
+      }
+      @-o-keyframes tvflicker {
+        0%   { box-shadow: 0 0 100px 0 rgba(225,235,255,0.4); }
+        100% { box-shadow: 0 0 60px 0 rgba(200,220,255,0.6); }
+      }
+      @keyframes tvflicker {
+        0%   { box-shadow: 0 0 100px 0 rgba(225,235,255,0.4); }
+        100% { box-shadow: 0 0 60px 0 rgba(200,220,255,0.6); }
+      }
+  }
 
+  video {
+    width: 100%;
+    max-height: 500px;
+}
