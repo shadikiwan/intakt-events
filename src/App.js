@@ -40,13 +40,6 @@ function App() {
         fetch('http://localhost:4000/')
             .then(response => response.json())
             .then(data => {
-                /*const any = {
-                    "summary": "Lesung Gedichte eines Leiharbeiters Kilian Lippold",
-                    "start": "2024-07-06T16:00:00.000Z",
-                    "end": "2024-07-06T17:00:00.000Z",
-                    "description": "No description available"
-                };
-                setCurrentEvent(any);*/
                 setCurrentEvent(data.currentEvent);
                 setFutureEvents(data.futureEvents.concat(data.futureEvents)); // Duplicate the events for smooth looping
                 startAutoScroll();
@@ -124,33 +117,45 @@ function App() {
                 </div>
             </div>
             <div className="container">
-                <div className="left-info-column">
-                    <div className="opening-hours-container">
-                        <h2>Öffnungszeiten</h2>
-                        <div className="opening-hours">
-                            <h4>MO: 13:00 – 15:00 Uhr</h4>
-                            <h4>DI: 17:00 – 19:00 Uhr</h4>
-                            <h4>DO: 15:00 – 17:00 Uhr</h4>
+                <div className="left-column">
+                <h2>Öffnungszeiten</h2>
+                    <div className="info-column">
+                        <div className="opening-hours-container">
+                            <div className="opening-hours">
+                                <p>MO: 13:00 – 15:00 Uhr</p>
+                                <p>DI: 17:00 – 19:00 Uhr</p>
+                                <p>DO: 15:00 – 17:00 Uhr</p>
+                            </div>
+                        </div>
+                        <div className="space"></div>
+                        <div>
+                            <h2>Besucht unsere Website:</h2>
+                        </div>
+                        
+                        <h4>www.intakt-magdeburg.de</h4>
+                        <div className="qr-code">
+                            <img className="qr-code" src="intakt_website.png" alt="QR Code for https://intakt-magdeburg.de/" />
+                        </div>
+                        <div className="space"></div>
+                        <div>
+                            <h2>Besucht uns auf Instagram:</h2>
+                        </div>
+                        <h4>@intakt_magdeburg</h4>
+                        <div className="qr-code">
+                            <img className="qr-code" src="intakt_instagram.png" alt="QR Code for https://www.instagram.com/intakt_magdeburg/" />
                         </div>
                     </div>
-                    <div className="qr-code">
-                        <h4>www.intakt-magdeburg.de</h4>
-                        <img className="qr-code" src="intakt_website.png" alt="QR Code for https://intakt-magdeburg.de/" />
-                    </div>
-                    <div className="qr-code">
-                        <h4>@intakt_magdeburg</h4>
-                        <img className="qr-code" src="intakt_instagram.png" alt="QR Code for https://www.instagram.com/intakt_magdeburg/" />
-                    </div>
+
                 </div>
-                <div className="left-column">
+                <div className="mid-column">
                     {currentEvent && (
                         <>
                             <h2>Aktuelle Veranstaltung</h2>
                             <div className="current-event event bg-color2 p-3 mb-2 text-start text-dark">
-                                <p><strong>{currentEvent.summary}</strong></p>
-                                <p>Start: {new Date(currentEvent.start).toLocaleString()}</p>
-                                <p>End: {new Date(currentEvent.end).toLocaleString()}</p>
-                                <p>{currentEvent.description}</p>
+                                <h4><strong>{currentEvent.summary}</strong></h4>
+                                <h4>Start: {new Date(currentEvent.start).toLocaleString()}</h4>
+                                <h4>End: {new Date(currentEvent.end).toLocaleString()}</h4>
+                                <h4>{currentEvent.description}</h4>
                             </div>
                         </>
                     )}
@@ -181,10 +186,10 @@ function App() {
                     <div className="events-container">
                         {futureEvents.map((event, index) => (
                             <div key={index} className={`event ${getBackgroundColorClass(index)} p-3 mb-2 text-start text-dark`}>
-                                <p><strong>{event.summary}</strong></p>
-                                <p>Start: {new Date(event.start).toLocaleString()}</p>
-                                <p>End: {new Date(event.end).toLocaleString()}</p>
-                                <p>{event.description}</p>
+                                <h4><strong>{event.summary}</strong></h4>
+                                <h4>Start: {new Date(event.start).toLocaleString()}</h4>
+                                <h4>End: {new Date(event.end).toLocaleString()}</h4>
+                                <h4>{event.description}</h4>
                             </div>
                         ))}
                     </div>

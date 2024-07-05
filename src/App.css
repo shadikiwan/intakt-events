@@ -115,10 +115,10 @@ body {
     min-height: 80vh;
 }
 
-.left-column {
+.mid-column {
   display: flex;
   flex-direction: column;
-  flex: 2;
+  flex: 1.75;
   margin: 0 20px 0 20px;
   max-height: 80vh;
   width: 45%;
@@ -130,24 +130,37 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
-  min-height: 20vh; 
   flex-shrink: 0; /* Prevent shrinking */
 
 }
 
-.left-info-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px 0 10px;
+    max-height: 86vh;
+    width: 45%;
+  }
+
+.info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   border-top-right-radius: 50px;
   background-color: #fae070;
-  max-height: 86vh;
-  padding: 10px;
+  align-items: center;
+  height: 100%;
 }
 
-.opening-hours-container, .qr-code-container, .video-container {
-    padding: 10px;
+.opening-hours-container, .qr-code-container {
+    padding: 20px;
+}
+
+.opening-hours-container {
+    font-size: 30px;
 }
 
 .qr-code-container {
@@ -156,9 +169,13 @@ body {
 }
 
 .qr-code {
-  width: 75%;
+  width: 60%;
   height: auto;
-  margin: 5px 0 5px 0;
+  margin: 10px 0 10px 0;
+}
+
+.space {
+    padding-bottom: 20px;
 }
 
 .events {
@@ -169,7 +186,7 @@ body {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 1.25;
 }
 
 /* Adjustments for better appearance */
@@ -367,7 +384,7 @@ strong {
   
   #monitorscreen {
       position: relative;
-    background-color: #777;
+    background-color: #000000;
       background-size: cover; 
       background-position: top center;
       height: 0; 
@@ -404,4 +421,5 @@ strong {
 
   video {
     width: 100%;
+    max-height: 500px;
 }
