@@ -67,6 +67,7 @@ body {
     position: relative;
     background: #fff; /* Default background color */
     font-family: 'Questrial';
+    cursor: none;
 }
 
 /* Bubble common styling */
